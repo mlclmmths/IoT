@@ -1,0 +1,31 @@
+void setup() {
+  // Initialising the pins used
+  pinMode(D1, OUTPUT); //RED
+  pinMode(D2, OUTPUT); //GREEN
+  pinMode(D3, OUTPUT); //BLUE
+  pinMode(A0, INPUT); //LIGHT SENSOR INPUT
+  Serial.begin(9600); //Comm channel
+}
+
+void loop() {
+  // Checks if the ambient light is sufficient
+  // If the ambience is below 300 lumen, the light is switched on
+  // Otherwise, it is switched off
+  int LDR=0;
+  LDR=analogRead(A0); // Read Analog Value from LDR
+  Serial.println(LDR); // Prints result to the console
+  if(LDR >= 301){
+  digitalWrite(D1, LOW); //OFF
+  digitalWrite(D2, LOW); //OFF
+  digitalWrite(D3, LOW); //OFF
+  }
+  else
+  {
+  digitalWrite(D1, HIGH); //ON
+  digitalWrite(D2, HIGH); //ON
+  digitalWrite(D3, HIGH); //ON
+  }
+  delay(100); // will repeat the program every second
+}
+
+//Author: Malcolm Mathaus (2019)
